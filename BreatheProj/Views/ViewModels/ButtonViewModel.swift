@@ -14,7 +14,15 @@ class ButtonViewModel: ObservableObject {
     
     @Published var status: BreathStage = .notStarted
     
-    private var task: Task<Void, Never>?
+    private var mainTask: Task<Void, Never>?
+    private var timer: Timer?
+    private var elapsedTime: Int = 0{
+        didSet{
+            withAnimation{
+                updateMainTimerText()
+            }
+        }
+    }
     
     @Published var repsCount: Int = 0
     @Published var totalReps: Int = 0
@@ -22,10 +30,12 @@ class ButtonViewModel: ObservableObject {
     @Published var descriptionText: String = ""
     @Published var mainText: String = ""
     @Published var instructionText: String = ""
-//    @Published var reverseCounter: Int = 0
     
     @Published var totalTime: TimeInterval
     
+    @Published var hours: Int = 0
+    @Published var minutes: Int = 0
+    @Published var seconds: Int = 0
     
     init(_ breathObject: BreathObject) {
         self.breathObject = breathObject
@@ -34,50 +44,58 @@ class ButtonViewModel: ObservableObject {
         self.repsCount = 0
         self.totalTime = 0.0
         
-        self.task = nil
+        self.mainTask = nil
         
-    }
-    
-    func reset() {
-        withAnimation {
-            self.repsCount = 0
-            self.totalTime = 0.0
-            self.mainText = globalBreathPurposes[breathObject.mainPurpose]!
-            self.descriptionText = globalBreathObjectsNames[breathObject.name]!
-            self.status = .notStarted
-            
-        }
-    }
-    
-    func changeBreathObject(_ newBreathObject: BreathObject, repsCount: Int) {
-        self.breathObject = newBreathObject
-        self.reset()
-
-    }
-    
-    func changeTotalRepsButton() {
-        if totalReps == -1 {
-            totalReps = 5
-        } else {
-            totalReps = -1
-        }
     }
     
     func start() async {
+        
         withAnimation{
             self.status = .instructions
         }
+        
         self.showInstructions()
-        if let task = self.task {
+        
+        if let task = self.mainTask {
             await task.value
         }
-        self.task = nil
+        self.mainTask = nil
         
+        self.startTimer()
         
     }
     
+    func stop() {
+        self.status = .notStarted
+        self.mainTask = nil
+        self.stopTimer()
+    }
+    
+    //MARK: - TIMER
+    
+    func startTimer() {
+        stopTimer()
+        
+        elapsedTime = 0
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { [weak self] _ in
+            guard let self = self else { return } // to avoid loops we are getting link
+            
+            Task { @MainActor in
+                self.elapsedTime += 1
+            }
+        }
+    }
+    
+    func stopTimer() {
+        timer?.invalidate()
+        timer = nil
+    }
+    
+    
+    //MARK: - TEXT CHANGES
+    
     private func showInstructions() {
-        task = Task {
+        mainTask = Task {
             let phrases = breathObject.instructions
             for phrase in phrases {
                 withAnimation{
@@ -92,9 +110,49 @@ class ButtonViewModel: ObservableObject {
         }
     }
     
-    func stop() {
-        self.status = .notStarted
-        self.task = nil
-        
+    private func updateMainTimerText() {
+        let hours = Int(elapsedTime / 3_600)
+        let minutes = Int((elapsedTime - hours * 3_600) / 60)
+        let seconds = Int(elapsedTime % 60)
+        var string = ""
+        if hours != self.hours {
+            self.hours = hours
+        }
+        if self.minutes != minutes {
+            self.minutes = minutes
+        }
+        self.seconds = seconds
+    }
+    
+
+    
+    //MARK: - OTHERS
+    
+    func changeTotalRepsButton() {
+        if totalReps == -1 {
+            totalReps = 5
+        } else {
+            totalReps = -1
+        }
+    }
+    
+    func reset() {
+        withAnimation {
+            self.repsCount = 0
+            self.totalTime = 0.0
+            self.mainText = globalBreathPurposes[breathObject.mainPurpose]!
+            self.descriptionText = globalBreathObjectsNames[breathObject.name]!
+            self.status = .notStarted
+            self.elapsedTime = 0
+            self.stopTimer()
+
+            
+        }
+    }
+    
+    func changeBreathObject(_ newBreathObject: BreathObject, repsCount: Int) {
+        self.breathObject = newBreathObject
+        self.reset()
+
     }
 }
