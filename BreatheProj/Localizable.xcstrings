@@ -1,0 +1,99 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Breathe in the calm, let it fill you." : {
+      "comment" : "inhale motivation"
+    },
+    "Each breath is a step toward balance." : {
+      "comment" : "hold motivation"
+    },
+    "Every breath brings you closer to calm." : {
+      "comment" : "calm motivation"
+    },
+    "Exhale tension, embrace relaxation." : {
+      "comment" : "exhale motivation"
+    },
+    "Feel lighter with every breath out." : {
+      "comment" : "exhale motivation"
+    },
+    "Feel proud of yourself—you’ve earned it." : {
+      "comment" : "end motivation"
+    },
+    "Feel the energy building inside you." : {
+      "comment" : "energy motivation"
+    },
+    "Feel the energy flowing into you." : {
+      "comment" : "inhale motivation"
+    },
+    "Find peace in the stillness." : {
+      "comment" : "calm motivation"
+    },
+    "Focus on the rhythm; you're in control." : {
+      "comment" : "hold motivation"
+    },
+    "Hello, world!" : {
+
+    },
+    "Inhale confidence, exhale doubt." : {
+      "comment" : "inhale motivation"
+    },
+    "Let go of the stress, breathe out peace." : {
+      "comment" : "exhale motivation"
+    },
+    "Let the negativity fade away." : {
+      "comment" : "exhale motivation"
+    },
+    "Release what no longer serves you." : {
+      "comment" : "exhale motivation"
+    },
+    "Rise higher with every breath." : {
+      "comment" : "energy motivation"
+    },
+    "Stay grounded, you’re safe here." : {
+      "comment" : "calm motivation"
+    },
+    "Take in the power of this moment." : {
+      "comment" : "inhale motivation"
+    },
+    "Take this peace with you into the day." : {
+      "comment" : "end motivation"
+    },
+    "The world slows down with your breath." : {
+      "comment" : "calm motivation"
+    },
+    "This breath fuels your dreams." : {
+      "comment" : "energy motivation"
+    },
+    "This is your moment—embrace it." : {
+      "comment" : "calm motivation"
+    },
+    "With every inhale, you grow stronger." : {
+      "comment" : "energy motivation"
+    },
+    "You're doing amazing—keep going!" : {
+      "comment" : "hold motivation"
+    },
+    "You're drawing in strength with every breath." : {
+      "comment" : "inhale motivation"
+    },
+    "You’re ready to face anything ahead." : {
+      "comment" : "end motivation"
+    },
+    "You're stronger than you think!" : {
+      "comment" : "hold motivation"
+    },
+    "You’re unstoppable—just breathe." : {
+      "comment" : "energy motivation"
+    },
+    "You’ve done great—carry this energy forward." : {
+      "comment" : "end motivation"
+    },
+    "Your breath is your power—own it." : {
+      "comment" : "hold motivation"
+    },
+    "Your journey is unfolding beautifully." : {
+      "comment" : "end motivation"
+    }
+  },
+  "version" : "1.0"
+}

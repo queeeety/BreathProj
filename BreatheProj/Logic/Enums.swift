@@ -13,4 +13,11 @@ enum BreathPurpose: Codable, CaseIterable {
     case focus
     case relaxation
     case anxietyRelief
+    case energy
+}
+
+enum BreathStage: Codable, CaseIterable {
+    case inhale
+    case hold
+    case exhale
 }
