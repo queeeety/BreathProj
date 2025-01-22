@@ -63,6 +63,19 @@ class ButtonViewModel: ObservableObject {
         
         self.startTimer()
         
+        // INHALE
+        self.status = .inhale
+        var countDown = countDownChanges(for: breathObject.inhale)
+        await countDown.value
+        
+        countDown.cancel()
+        self.status = .hold
+        countDown = countDownChanges(for: breathObject.hold)
+        await countDown.value
+        
+        self.status = .exhale
+        countDown = countDownChanges(for: breathObject.exhale)
+        await countDown.value
     }
     
     func stop() {
@@ -114,7 +127,7 @@ class ButtonViewModel: ObservableObject {
         let hours = Int(elapsedTime / 3_600)
         let minutes = Int((elapsedTime - hours * 3_600) / 60)
         let seconds = Int(elapsedTime % 60)
-        var string = ""
+
         if hours != self.hours {
             self.hours = hours
         }
@@ -124,7 +137,18 @@ class ButtonViewModel: ObservableObject {
         self.seconds = seconds
     }
     
-
+    private func countDownChanges(for seconds: Int) -> Task<Void, Never> {
+        let task = Task {
+            for i in stride(from: seconds, through: 0, by: -1) {
+                withAnimation{
+                    mainText = "\(i)"
+                }
+                try? await Task.sleep(nanoseconds: 1_000_000_000)
+            }
+            self.mainText = ""
+        }
+        return task
+    }
     
     //MARK: - OTHERS
     
