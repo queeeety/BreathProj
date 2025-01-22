@@ -21,3 +21,7 @@ enum BreathStage: Codable, CaseIterable {
     case hold
     case exhale
 }
+
+enum BreathName: String, Codable, CaseIterable {
+    case fourSevenEight = "4-7-8"
+}

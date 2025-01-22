@@ -1,8 +1,17 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "After breathing in, hold your breath for a count of seven" : {
+
+    },
+    "Breathe in silently through your nose for a count of four" : {
+
+    },
     "Breathe in the calm, let it fill you." : {
       "comment" : "inhale motivation"
+    },
+    "Breathe out forcefully through your mouth" : {
+
     },
     "Each breath is a step toward balance." : {
       "comment" : "hold motivation"
@@ -49,6 +58,9 @@
     "Rise higher with every breath." : {
       "comment" : "energy motivation"
     },
+    "Sit comfortably with a straight back" : {
+
+    },
     "Stay grounded, you’re safe here." : {
       "comment" : "calm motivation"
     },
@@ -66,6 +78,18 @@
     },
     "This is your moment—embrace it." : {
       "comment" : "calm motivation"
+    },
+    "To calm down" : {
+
+    },
+    "To reduce stress" : {
+
+    },
+    "To sleep easier" : {
+
+    },
+    "try making a ‘whoosh’ sound as you let the air out" : {
+
     },
     "With every inhale, you grow stronger." : {
       "comment" : "energy motivation"
@@ -93,6 +117,9 @@
     },
     "Your journey is unfolding beautifully." : {
       "comment" : "end motivation"
+    },
+    "your tongue should be resting against the roof of your mouth" : {
+
     }
   },
   "version" : "1.0"

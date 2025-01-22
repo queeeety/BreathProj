@@ -8,7 +8,7 @@
 import Foundation
 
 class BreathObject: Codable {
-    let name: String
+    let name: BreathName
     let mainPurpose: BreathPurpose
     let description:[String]
     let instructions: [PhraseObject]
@@ -17,7 +17,7 @@ class BreathObject: Codable {
     let exhale: Int
     let phrases: [PhraseObject]
     
-    init(name: String,
+    init(name: BreathName,
          mainPurpose: BreathPurpose,
          description: [String],
          instructions: [PhraseObject],

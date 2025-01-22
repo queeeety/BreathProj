@@ -9,7 +9,7 @@ import Foundation
 
 let GlobalObjects: [BreathObject] = [
     BreathObject(
-        name: String(localized: "4-7-8"),
+        name: .fourSevenEight,
         mainPurpose: BreathPurpose.calm,
         description: [
             String(localized:"To calm down"),
