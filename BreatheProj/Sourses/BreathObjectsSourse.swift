@@ -39,3 +39,17 @@ let GlobalObjects: [BreathObject] = [
     )
     
 ]
+
+
+let globalBreathObjectsNames: [BreathName: String] = [
+    .fourSevenEight: String(localized: "4-7-8")
+]
+    
+let globalBreathPurposes: [BreathPurpose: String] = [
+    .anxietyRelief: String(localized: "Anxiety relief"),
+    .calm: String(localized: "Calm"),
+    .relaxation: String(localized: "Relaxation"),
+    .focus: String(localized: "Focus"),
+    .energy: String(localized: "Energy"),
+    .sleep: String(localized: "Sleep")
+]
